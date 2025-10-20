@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+  <mat-card fxFlex="60">
+    <mat-card-title style="text-align: center; padding: 8px;">Agendamento de Consulta</mat-card-title>
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutAlign="start stretch" #schedulingForm="ngForm" (ngSubmit)="scheduleAppointment()">
+        <mat-form-field appearance="fill">
+          <mat-label>Paciente</mat-label>
+          <mat-select [(ngModel)]="appointment.patientId" name="patient" required>
+            <mat-option *ngFor="let patient of patients" [value]="patient.id">
+              {{ patient.fullName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Médico</mat-label>
+          <mat-select [(ngModel)]="appointment.doctorId" name="doctor" required>
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
+              {{ doctor.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="appointment.date" name="date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Hora</mat-label>
+          <input matInput type="time" [(ngModel)]="appointment.time" name="time" required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="warn" (click)="clearForm()">Limpar</button>
+      <button mat-raised-button color="primary" (click)="scheduleAppointment()" [disabled]="!schedulingForm.valid">Agendar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

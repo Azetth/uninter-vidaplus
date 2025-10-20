@@ -1,0 +1,30 @@
+<div *ngIf="isAuthenticated; else loginContent">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">Dashboard</a>
+        <a mat-list-item routerLink="/patient-registration">Cadastro de Paciente</a>
+        <a mat-list-item routerLink="/scheduling">Agendamento</a>
+        <a mat-list-item routerLink="/teleconsultation">Teleconsulta</a>
+        <a mat-list-item (click)="logout()">Sair</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content-padding">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  </div>
+
+<ng-template #loginContent>
+  <router-outlet></router-outlet>
+</ng-template>
+

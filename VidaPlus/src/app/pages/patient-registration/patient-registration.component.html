@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+  <mat-card fxFlex="60">
+    <mat-card-title style="text-align: center; padding: 8px;">Cadastro de Paciente</mat-card-title>
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutAlign="start stretch" #patientForm="ngForm" (ngSubmit)="savePatient()">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome Completo</mat-label>
+          <input matInput [(ngModel)]="patient.fullName" name="fullName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput type="date" [(ngModel)]="patient.dateOfBirth" name="dateOfBirth" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input matInput [(ngModel)]="patient.cpf" name="cpf" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Endereço</mat-label>
+          <input matInput [(ngModel)]="patient.address" name="address" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput [(ngModel)]="patient.phone" name="phone" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="patient.email" name="email" required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="warn" (click)="clearForm()">Limpar</button>
+      <button mat-raised-button color="primary" (click)="savePatient()" [disabled]="!patientForm.valid">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

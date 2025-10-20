@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px" style="padding: 20px;">
+  <mat-card>
+    <mat-card-title style="text-align: center; padding: 8px;">Resumo Geral</mat-card-title>
+    <mat-card-content fxLayout="row" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h3>Total de Consultas</h3>
+        <p>{{ totalAppointments }}</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h3>Consultas Agendadas</h3>
+        <p>{{ upcomingAppointments }}</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h3>Consultas Concluídas</h3>
+        <p>{{ completedAppointments }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title style="text-align: center; padding: 8px;">Próximas Consultas</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let appointment of nextAppointments">
+          <mat-icon matListItemIcon>event</mat-icon>
+          <div matListItemTitle>{{ appointment.patientName }} ({{ appointment.type }})</div>
+          <div matListItemLine>{{ appointment.doctorName }}</div>
+          <div matListItemLine>{{ appointment.date }} às {{ appointment.time }}</div>
+        </mat-list-item>
+        <mat-list-item *ngIf="nextAppointments.length === 0">
+          Nenhuma consulta agendada para os próximos dias.
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

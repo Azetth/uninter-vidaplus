@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "uniter-vidaplus-gian",
+    "public": "dist/vida-plus/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "appAssociation": "AUTO"
+  }
+}
